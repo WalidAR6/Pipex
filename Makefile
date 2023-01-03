@@ -23,10 +23,12 @@ ${NAME} : $(PRINTF) $(OBJ)
 	${CC} $^ -o $@ 
 
 %.o : %.c 
-	${CC} ${FLAGS} -c $< -o $@ 
+	${CC} ${FLAGS} -c $< -o $@ -g
 
 clean: 
 	@${RM} *.o */*.o */*/*.o
 
 fclean: 
 	@${RM} *.o */*.o */*/*.o */*/*.a ${NAME}
+
+re: clean fclean all
