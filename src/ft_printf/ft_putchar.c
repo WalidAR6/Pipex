@@ -6,11 +6,11 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/09 18:41:33 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/03 18:22:40 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/03 18:55:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
 void	ft_putchar(char c, int *res)
 {

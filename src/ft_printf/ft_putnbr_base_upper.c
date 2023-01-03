@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_base_upper.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/09 18:41:53 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/03 18:22:58 by waraissi         ###   ########.fr       */
+/*   Created: 2022/11/09 18:43:07 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/03 18:55:10 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/ft_printf.h"
+#include "../../inc/ft_printf.h"
 
-void	ft_putstr(char *s, int *res)
+void	ft_putnbr_base_upper(unsigned int nbr, int *res)
 {
-	int	i;
+	char	*base;
 
-	i = 0;
-	if (!s)
-	{
-		write(1, "(null)", 6);
-		*res += 6;
-	}
+	base = "0123456789ABCDEF";
+	if (nbr < 16)
+		ft_putchar(base[nbr], res);
 	else
 	{
-		while (s[i])
-		{
-			ft_putchar(s[i], res);
-			i++;
-		}
+		ft_putnbr_base_upper(nbr / 16, res);
+		ft_putnbr_base_upper(nbr % 16, res);
 	}
 }

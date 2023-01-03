@@ -22,7 +22,7 @@ all: ${NAME}
 ${NAME}: ${OBJ}
 	${AR} ${NAME} ${OBJ}
 
-%.o: %.c ../inc/ft_printf.h
+%.o: %.c ../../inc/ft_printf.h
 	${CC} ${FLAGS} -c $<
 
 clean:
