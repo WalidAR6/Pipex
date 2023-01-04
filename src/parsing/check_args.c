@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:54:56 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/04 17:55:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/04 18:21:06 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ void    check_first_arg(char *arg)
 
     fd = open(arg, O_RDWR);
     if (fd < 0)
-        printf_exit();
+        printf_exit(arg);
 }
