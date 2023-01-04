@@ -10,20 +10,24 @@ PRINTF_P = src/ft_printf
 
 PRINTF_H = inc/ft_printf.h
 
-FILES = main
+FILES = main\
+		src/parsing/check_args\
+		src/errors/first_arg_er
+
 
 OBJ = $(FILES:=.o);
 
-all: ${NAME}
+all: ${NAME} ${PRINTF}
 
 ${PRINTF}: ${PRINTF_H}
-	${MAKE} -C ${PRINTF_P}
+	@${MAKE} -C ${PRINTF_P}
+	@echo "\033[92mft_printf compiled ✔\033[0m"
 
 ${NAME} : $(PRINTF) $(OBJ)
 	${CC} $^ -o $@ 
 
 %.o : %.c 
-	${CC} ${FLAGS} -c $< -o $@ -g
+	${CC} ${FLAGS} -c $< -o $@
 
 clean: 
 	@${RM} *.o */*.o */*/*.o

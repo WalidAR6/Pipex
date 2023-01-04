@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   first_arg_er.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/04 18:03:36 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/04 17:57:27 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/04 18:01:38 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/pipex.h"
+#include "../../inc/pipex.h"
 
-int main(int ac, char **av)
+void    printf_exit()
 {
-    if (ac == 5)
-    {
-        check_first_arg(av[1]);
-    }
-    return 0;
+    ft_printf("Error : Invalid file");
+    exit(1);
 }

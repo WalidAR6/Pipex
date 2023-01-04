@@ -20,10 +20,10 @@ OBJ = ${SRC:.c=.o}
 all: ${NAME}
 
 ${NAME}: ${OBJ}
-	${AR} ${NAME} ${OBJ}
+	@${AR} ${NAME} ${OBJ}
 
 %.o: %.c ../../inc/ft_printf.h
-	${CC} ${FLAGS} -c $<
+	@${CC} ${FLAGS} -c $<
 
 clean:
 	rm -f ${OBJ}

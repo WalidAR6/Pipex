@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   check_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/04 18:03:36 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/04 17:54:56 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/04 17:55:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "inc/pipex.h"
+#include "../../inc/pipex.h"
 
-int main(int ac, char **av)
+void    check_first_arg(char *arg)
 {
-    if (ac == 5)
-    {
-        check_first_arg(av[1]);
-    }
-    return 0;
+    int fd;
+
+    fd = open(arg, O_RDWR);
+    if (fd < 0)
+        printf_exit();
 }
