@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/11/09 18:41:33 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:58:12 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
-
-void    check_first_arg(char *arg);
-
-#endif
+void	ft_putchar(int fd, char c, int *res)
+{
+	write(fd, &c, 1);
+	*res = *res + 1;
+}

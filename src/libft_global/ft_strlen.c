@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/10/07 18:05:06 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:59:13 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+size_t	ft_strlen(const char *str)
+{
+	size_t	i;
 
-void    check_first_arg(char *arg);
-
-#endif
+	i = 0;
+	while (str[i] != '\0')
+	{
+		i++;
+	}
+	return (i);
+}

@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/10/13 11:40:58 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:59:21 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+char	*ft_strnstr(const char *str, const char *look, size_t n)
+{
+	size_t	i;
 
-void    check_first_arg(char *arg);
-
-#endif
+	i = 0;
+	if (!(str && look) && n == 0)
+		return (NULL);
+	if (ft_strlen(look) == 0)
+		return ((char *)str);
+	while (str[i] && i + ft_strlen(look) <= n)
+	{
+		if (ft_strncmp(&str[i], &look[0], ft_strlen(look)) == 0)
+			return ((char *)&str[i]);
+		i++;
+	}
+	return (NULL);
+}

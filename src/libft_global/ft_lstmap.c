@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/10/30 01:20:31 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:57:35 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+{
+	t_list	*p;
+	t_list	*new;
 
-void    check_first_arg(char *arg);
-
-#endif
+	if (!lst || !f || !del)
+		return (NULL);
+	new = NULL;
+	while (lst)
+	{
+		p = ft_lstnew(((*f)(lst->content)));
+		if (!p)
+			ft_lstclear(&new, del);
+		ft_lstadd_back(&new, p);
+		lst = lst->next;
+	}
+	return (new);
+}

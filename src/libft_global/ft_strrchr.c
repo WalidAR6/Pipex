@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/10/11 14:56:22 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:59:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+char	*ft_strrchr(const char *str, int c)
+{
+	size_t	i;
 
-void    check_first_arg(char *arg);
-
-#endif
+	i = ft_strlen(str);
+	while (i > 0)
+	{
+		if (str[i] == (char)c)
+			return ((char *)(str + i));
+		i--;
+	}
+	if (str[i] == (char)c)
+		return ((char *)str);
+	return (NULL);
+}

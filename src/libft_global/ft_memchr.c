@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/10/21 17:13:07 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:57:45 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+void	*ft_memchr(const void *str, int c, size_t n)
+{
+	size_t	i;
 
-void    check_first_arg(char *arg);
-
-#endif
+	i = 0;
+	while (i < n)
+	{
+		if (((unsigned char *)str)[i] == (unsigned char)c)
+			return ((unsigned char *)str + i);
+		i++;
+	}
+	return (NULL);
+}

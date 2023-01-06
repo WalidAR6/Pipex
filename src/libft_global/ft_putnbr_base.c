@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/06 15:05:21 by waraissi         ###   ########.fr       */
+/*   Created: 2022/11/09 18:42:39 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/06 14:58:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "../../inc/libft.h"
 
-# include "libft.h"
-# include <unistd.h>
-# include <sys/wait.h>
-# include <fcntl.h>
-# include <stdlib.h>
+void	ft_putnbr_base(int fd, unsigned long long nbr, int *res)
+{
+	char	*base;
 
-void    check_first_arg(char *arg);
-
-#endif
+	base = "0123456789abcdef";
+	if (nbr < 16)
+		ft_putchar(fd, base[nbr], res);
+	else
+	{
+		ft_putnbr_base(fd, nbr / 16, res);
+		ft_putnbr_base(fd, nbr % 16, res);
+	}
+}
