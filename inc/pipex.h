@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/07 00:59:18 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/07 23:44:57 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,19 @@
 
 typedef struct s_params
 {
+    int  infile;
+    int  outfile;
     char *f_a;
     char *l_a;
+    char **cmd1;
+    char **cmd2;
+    char *path;
 }               t_params;
 
-void    check_first_arg(char *arg);
-int     is_last_arg(char **av);
+void    check_first_arg(t_params *vars);
+void    check_last_arg(t_params *vars);
+int     access_per(t_params *vars);
+char    **split_arg(char *str);
+char    *get_file_name(char **envp);
 
 #endif
