@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   join_cmds.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/08 01:29:42 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/08 01:24:28 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/08 01:49:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipex.h"
 
-int main(int ac, char **av, char **envp)
+void    join_commands(t_params *vars)
 {
-    t_params    vars;
-    char        *path;
-
-    vars.f_a = av[1];
-    vars.l_a = av[ac - 1];
-    if (ac == 5)
+    int i;
+    char *cmd;
+    
+    i = 0;
+    while (vars->path[i])
     {
-        check_first_arg(&vars);
-        check_last_arg(&vars);
-        vars.cmd1 = split_arg(av[2]);
-        vars.cmd2 = split_arg(av[3]);
-        path = get_file_name(envp);
-        vars.path = paths_file(path);
-        join_commands(&vars);
-    }
+        cmd = NULL;
+        cmd = ft_strjoin(vars->path[i], vars->cmd1[0]);
+        i++;
+    }   
 }

@@ -6,7 +6,8 @@ SRC = main\
 	check_args\
 	access_permissions\
 	split_args\
-	get_file_name
+	get_file_name\
+	join_cmds
 
 OBJ_DIR = ../../bin/mandatory/
 
