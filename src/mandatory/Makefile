@@ -24,7 +24,7 @@ ${NAME} : ${OBJCTS}
 
 $(OBJ_DIR)%.o : %.c ../../inc/pipex.h
 	@mkdir -p $(OBJ_DIR)
-	${CC} ${FLAGS} -c $< -o $@
+	${CC} ${FLAGS} -c $< -o $@ -g
 
 clean: 
 	@${RM} $(OBJCTS)

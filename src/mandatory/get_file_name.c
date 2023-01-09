@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:52:55 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/07 23:55:35 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/09 14:07:04 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ char    *get_file_name(char **envp)
 char    **paths_file(char *str)
 {
     char **paths;
+    int i;
 
+    i = 0;
     paths = ft_split(str, ':');
     return (paths);
 }

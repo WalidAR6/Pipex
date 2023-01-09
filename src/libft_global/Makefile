@@ -6,7 +6,7 @@
 #    By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 12:08:36 by waraissi          #+#    #+#              #
-#    Updated: 2023/01/06 17:30:15 by waraissi         ###   ########.fr        #
+#    Updated: 2023/01/09 17:17:52 by waraissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,6 +69,7 @@ SRCS = ft_isalpha \
 	 		ft_putnbr_base_lower\
 	   		ft_putnbr_unsigned\
 		   	ft_putnbr_base\
+			ft_strjoin_sep\
 		   	ft_printf
 
 OBJ_DIR = ../../bin/libft_global/
@@ -84,7 +85,7 @@ ${NAME}: ${OBJCTS}
 
 $(OBJ_DIR)%.o: %.c ../../inc/libft.h
 	@mkdir -p $(OBJ_DIR)
-	@${CC} ${FLAGS} -c $< -o $@
+	@${CC} ${FLAGS} -c $< -o $@ -g
 	
 clean:
 	@rm $(OBJCTS)
