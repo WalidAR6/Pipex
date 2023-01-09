@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/08 01:24:28 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/09 21:41:48 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/09 22:28:42 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ char    **join_commands(t_params *vars, char **envp)
 {
     int i;
     char **cmd;
+    int fd;
 
     i = 0;
+    fd = dup(0);
     dup2(vars->infile, 0);
     cmd = malloc((get_paths_len(vars->path) + 1) * sizeof(*cmd));
     if(!cmd)
