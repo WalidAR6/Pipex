@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/09 16:22:38 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:46:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <unistd.h>
+# include <stdio.h>
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
@@ -37,6 +38,10 @@ int     access_per(t_params *vars);
 char    **split_arg(char *str);
 char    *get_file_name(char **envp);
 char    **paths_file(char *str);
-char    **join_commands(t_params *vars, char **envp);
+char    **join_commands(t_params *vars, char *cmd);
+void    exec_all_cmd(t_params *vars, char **envp, char **cmd1, char **cmd2);
+void    exec_cmd_2(t_params *vars, char **envp, char **cmd, int *fd);
+char    *get_name(t_params *vars, char **cmd);
+void    execute_cmd(t_params *vars, char **envp, char **cmd);
 
 #endif

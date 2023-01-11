@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/11 00:54:48 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/11 22:44:36 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int main(int ac, char **av, char **envp)
 {
     t_params    vars;
     char        *path;
+    char        **cmd1;
+    char        **cmd2;
     
     vars.f_a = av[1];
     vars.l_a = av[ac - 1];
@@ -23,11 +25,10 @@ int main(int ac, char **av, char **envp)
     {
         check_first_arg(&vars);
         check_last_arg(&vars);
-        vars.cmd1 = split_arg(av[2]);
-        vars.cmd2 = split_arg(av[3]);
+        cmd1 = split_arg(av[2]);
+        cmd2 = split_arg(av[3]);
         path = get_file_name(envp);
         vars.path = paths_file(path);
-        vars.path_cmd = join_commands(&vars, envp);
-        
+        exec_all_cmd(&vars, envp, cmd1, cmd2);
     }
 }
