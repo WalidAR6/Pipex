@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/09 21:56:36 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/11 00:54:48 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,5 +28,6 @@ int main(int ac, char **av, char **envp)
         path = get_file_name(envp);
         vars.path = paths_file(path);
         vars.path_cmd = join_commands(&vars, envp);
+        
     }
 }
