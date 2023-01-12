@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 17:54:56 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/07 19:57:12 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/12 17:15:34 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@ void    check_first_arg(t_params *vars)
 {
     vars->infile = open(vars->f_a, O_RDONLY);
     if (vars->infile == -1)
+    {
         ft_printf(2,"%s: No such file or directory\n", vars->f_a);
+        exit(1);
+    }
 }
 
 void    check_last_arg(t_params *vars)

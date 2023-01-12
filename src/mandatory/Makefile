@@ -4,7 +4,6 @@ FLAGS = -Wall -Wextra -Werror
 
 SRC = main\
 	check_args\
-	access_permissions\
 	split_args\
 	get_file_name\
 	join_cmds\
