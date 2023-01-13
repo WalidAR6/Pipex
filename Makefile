@@ -2,6 +2,8 @@ LIBFT_DIR = src/libft_global
 
 MANDA_DIR = src/mandatory
 
+BONUS_DIR = src/bonus
+
 OBJ_DIR = bin/
 
 all: 
@@ -9,6 +11,12 @@ all:
 	@echo "\033[92mlibft compiled ✔\033[0m"
 	@${MAKE} -C ${MANDA_DIR}
 	@echo "\033[92mmandatory compiled ✔\033[0m"
+
+bonus:
+	@${MAKE} -C ${LIBFT_DIR}
+	@echo "\033[92mlibft compiled ✔\033[0m"
+	@${MAKE} -C ${BONUS_DIR}
+	@echo "\033[92mbonus compiled ✔\033[0m"
 
 clean:
 	@${MAKE} -C ${MANDA_DIR} clean
