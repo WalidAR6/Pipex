@@ -21,10 +21,12 @@ bonus:
 clean:
 	@${MAKE} -C ${MANDA_DIR} clean
 	@${MAKE} -C ${LIBFT_DIR} clean
+	@${MAKE} -C ${BONUS_DIR} clean
 
 fclean:
 	@${MAKE} -C ${LIBFT_DIR} fclean
 	@${MAKE} -C ${MANDA_DIR} fclean
+	@${MAKE} -C ${BONUS_DIR} fclean
 	@$(RM) -rf $(OBJ_DIR)
 
 re: fclean all
