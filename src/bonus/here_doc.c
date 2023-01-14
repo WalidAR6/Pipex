@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_args_bonus.c                                 :+:      :+:    :+:   */
+/*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 21:28:59 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/13 21:29:20 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/14 23:53:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipex_bonus.h"
 
-void    check_first_arg(t_params *vars)
+void    here_doc(int ac, char **av, char **envp)
 {
-    vars->infile = open(vars->f_a, O_RDONLY);
-    if (vars->infile == -1)
+    char    *line;
+    if (ac == 6 && !ft_strncmp(av[1], "here_doc", sizeof(av[1])))
     {
-        ft_printf(2,"%s: No such file or directory\n", vars->f_a);
-        exit(1);
+        while (1)
+        {
+            line = get_next_line(0);
+        }
+        
     }
-}
-
-void    check_last_arg(t_params *vars)
-{
-    vars->outfile = open(vars->l_a, O_WRONLY | O_CREAT | O_TRUNC, 0777);
-    if (vars->outfile == -1)
-    {
-        ft_printf(2,"Error");
-    }
+    
 }

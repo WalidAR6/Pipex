@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/07 21:52:55 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/12 17:13:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/13 23:18:05 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,4 @@ char    *get_file_name(char **envp)
         i++;
     }
     return (ft_printf(2, "commands not found\n"), NULL);
-}
-
-char    **paths_file(char *str)
-{
-    char **paths;
-    int i;
-
-    i = 0;
-    paths = ft_split(str, ':');
-    return (paths);
 }
