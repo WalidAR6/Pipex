@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 23:29:01 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:11:40 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/15 19:45:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strjoin(char *s1, char *s2)
 
 	i = 0;
 	j = 0;
+	if (!s1)
+		s1 = ft_strdup("");
 	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!p)
 		return (NULL);
@@ -34,5 +36,5 @@ char	*ft_strjoin(char *s1, char *s2)
 		j++;
 	}
 	p[i + j] = 0;
-	return (free(s1), s1 = NULL, p);
+	return (p);
 }

@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/14 19:55:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/16 02:12:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,15 @@
 # include <fcntl.h>
 # include <stdlib.h>
 
-typedef struct s_main
-{
-    int ac;
-    char **av;
-    char **envp;
-}               t_main;
 
-typedef struct s_params
+typedef struct s_heredoc
 {
-    t_main *main;
-}               t_params;
+    int outfile;
+    char    **path;
+    char    *l_a;
+    
+}               t_heredoc;
+
 
 void    here_doc(int ac, char **av, char **envp);
 
