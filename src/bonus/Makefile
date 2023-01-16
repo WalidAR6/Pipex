@@ -3,7 +3,11 @@ NAME = pipex
 FLAGS = -Wall -Wextra -Werror
 
 SRC = main_bonus\
-		here_doc
+		here_doc_bonus\
+		get_file_name_bonus\
+		execve_bonus\
+		check_arg_bonus\
+		join_cmds_bonus
 
 OBJ_DIR = ../../bin/bonus/
 
