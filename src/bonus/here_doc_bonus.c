@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/16 18:53:35 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/18 01:03:32 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void    execution(t_heredoc *vars, int tmp, char **cmd, char **cmd1)
     }
         
 }
-
+#include <string.h>
 void    execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)
 {
     int tmp;
@@ -66,7 +66,7 @@ void    execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)
     {
         write(1, "> ", 2);
         line = get_next_line(0);
-        if (line == NULL || !ft_strncmp(line, vars->h_d, ft_strlen(vars->h_d) - 1))
+        if (line == NULL || !strncmp(line, vars->h_d, ft_strlen(line) - 1))
             break;
         write(tmp,line, ft_strlen(line));
         free(line);

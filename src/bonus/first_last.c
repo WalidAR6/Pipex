@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   join_cmds_bonus.c                                  :+:      :+:    :+:   */
+/*   first_last.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:04:18 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/18 01:03:35 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/17 23:38:23 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/18 01:04:17 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipex_bonus.h"
 
-int     get_paths_len(char **str)
+void    check_first(t_params *vars)
 {
-    int i;
-
-    i = 0;
-    while (str[i])
+    vars->infile = open(vars->f_a, O_RDONLY);
+    if (vars->infile == -1)
     {
-        i++;
+        ft_printf(2,"%s: No such file or directory\n", vars->f_a);
+        exit(1);
     }
-    return (i);
 }
 
-char    **join_commands(t_heredoc *vars, char *arg)
+void    check_last(t_params *vars)
 {
-    int i;
-    char **cmd;
-
-    i = 0;
-    cmd = malloc((get_paths_len(vars->path) + 1) * sizeof(*cmd));
-    if(!cmd)
-        return (NULL);
-    while (vars->path[i])
+    vars->outfile = open(vars->l_a, O_WRONLY | O_CREAT | O_TRUNC, 777);
+    if (vars->outfile == -1)
     {
-        cmd[i] = ft_strjoin_sep(vars->path[i], arg, "/");
-        i++;
+        ft_printf(2,"Error");
     }
-    cmd[i] = NULL;
-    return (cmd);
 }
