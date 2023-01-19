@@ -9,7 +9,8 @@ SRC = main_bonus\
 		check_arg_bonus\
 		join_cmds_bonus\
 		multiple_files_bonus\
-		first_last
+		first_last\
+		multi_pipe_exe
 
 OBJ_DIR = ../../bin/bonus/
 

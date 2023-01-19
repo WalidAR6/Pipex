@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/17 23:39:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/18 13:27:09 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,14 @@ typedef struct s_heredoc
     
 }               t_heredoc;
 
-typedef struct s_params
+typedef struct s_vars
 {
     char    *f_a;
     char    *l_a;
     int     infile;
     int     outfile;
-}              t_params;
+    char    **path;
+}              t_vars;
 
 void    here_doc(int ac, char **av, char **envp);
 void    multuple_pipes(int ac, char **av, char **envp);
@@ -48,7 +49,9 @@ char    **join_commands(t_heredoc *vars, char *arg);
 int     get_paths_len(char **str);
 void    check_last_arg(t_heredoc *vars);
 void    multiple_pipes(int ac, char **av, char **envp);
-void    check_first(t_params *vars);
-void    check_last(t_params *vars);
+void    check_first(t_vars *vars);
+void    check_last(t_vars *vars);
+void    execute_first_cmd(t_vars *vars, char **envp, char **cmd);
+char    *get_name_multi(t_vars *vars, char **cmd);
 
 #endif
