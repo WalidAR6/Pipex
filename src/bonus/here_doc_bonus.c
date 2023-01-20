@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/18 01:03:32 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/20 17:12:03 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,11 @@ void    execution_sec(t_heredoc *vars, int *fd, char **cmd1)
         execute_child(vars, cmd1);
     }
     else
+    {
+        close(fd[0]);
+        close(fd[1]);
         waitpid(id, 0, 0);
+    }
 }
 
 void    execution(t_heredoc *vars, int tmp, char **cmd, char **cmd1)
@@ -45,35 +49,36 @@ void    execution(t_heredoc *vars, int tmp, char **cmd, char **cmd1)
     }
     else
     {
-        waitpid(id, 0, 0);
-        execution_sec(vars, fd, cmd1);
         close(tmp);
-        close(fd[0]);
-        close(fd[1]);
+        execution_sec(vars, fd, cmd1);
     }
-        
 }
+
 #include <string.h>
 void    execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)
 {
     int tmp;
     char *line;
+    char *limiter;
 
-    tmp = open("heredoc", O_RDWR | O_CREAT | O_TRUNC, 0644);
+    tmp = open(".heredoc.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
     if (!tmp)
         return ;
     while (1)
     {
         write(1, "> ", 2);
         line = get_next_line(0);
-        if (line == NULL || !strncmp(line, vars->h_d, ft_strlen(line) - 1))
+        limiter = ft_strjoin(vars->h_d, "\n");
+        if (line == NULL || strcmp(line, limiter) == 0)
             break;
-        write(tmp,line, ft_strlen(line));
+        write(tmp, line, ft_strlen(line));
         free(line);
+        free(limiter);
     }
     close(tmp);
-    tmp = open("heredoc", O_RDONLY);
+    tmp = open(".heredoc.txt", O_RDONLY);
     execution(vars, tmp, cmd, cmd1);
+    unlink(".heredoc.txt");
 }
 
 void    here_doc(int ac, char **av, char **envp)
@@ -95,5 +100,6 @@ void    here_doc(int ac, char **av, char **envp)
         cmd = ft_split(av[3], ' ');
         cmd1 = ft_split(av[4], ' ');
         execute_heredoc(&vars, cmd, cmd1);
+        
     }
 }
