@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:04:17 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/09 14:19:12 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/21 01:47:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char    *ft_strjoin_sep(char *s1, char *s2, char *sep);
+int		ft_strcmp(char *s1, char *s2);
 
 /*************************BONUS PART****************************/
 typedef struct s_list
