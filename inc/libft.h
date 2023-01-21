@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:04:17 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/21 23:05:22 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/21 23:59:37 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,17 +86,6 @@ int		get_index(char	*str);
 char	*before_newline(char *str);
 char	*after_newline(char *str);
 char	*get_next_line(int fd);
-
-/*************************GET NEXT LINE****************************/
-
-void	ft_putchar(int fd, char c, int *res);
-void	ft_putstr(int fd, char *s, int *res);
-void	ft_putnbr(int fd, int n, int *res);
-void	ft_putnbr_unsigned(int fd, unsigned int nbr, int *res);
-void	ft_putnbr_base(int fd, unsigned long long nbr, int *res);
-void	ft_putnbr_base_lower(int fd, unsigned int nbr, int *res);
-void	ft_putnbr_base_upper(int fd, unsigned int nbr, int *res);
-int		ft_printf(int fd, const char *str, ...);
 
 /*************************FT_PRINTF_FD****************************/
 
