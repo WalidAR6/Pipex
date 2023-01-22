@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/21 23:07:36 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/22 19:15:12 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_heredoc
 	char	**path;
 	char	*l_a;
 	char	*h_d;
+	char	*line;
+	char	*limiter;
 }				t_heredoc;
 
 typedef struct s_vars
