@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/22 19:22:26 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 01:50:50 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,26 +65,16 @@ void	execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)
 
 	tmp = open(".heredoc.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
 	if (!tmp)
-		return ;
-	while (1)
-	{
-		if (write(1, "> ", 2) == -1)
-			exit(1);
-		vars->line = get_next_line(0);
-		vars->limiter = ft_strjoin(vars->h_d, "\n");
-		if (vars->line == NULL || ft_strcmp(vars->line, vars->limiter) == 0)
-			break ;
-		if(write(tmp, vars->line, ft_strlen(vars->line)) == -1)
-			exit(1);
-		free(vars->line);
-		free(vars->limiter);
-	}
+		exit(1);
+	vars->limiter = ft_strjoin(vars->h_d, "\n");
+	here_loop(vars, tmp);
 	if (close(tmp) == -1)
 		exit(1);
 	tmp = open(".heredoc.txt", O_RDONLY);
 	if (!tmp)
-		return ;
+		exit(1);
 	execution(vars, tmp, cmd, cmd1);
+	free(vars->limiter);
 	unlink(".heredoc.txt");
 }
 
@@ -101,16 +91,17 @@ void	here_doc(int ac, char **av, char **envp)
 	t_heredoc	vars;
 	char		**cmd;
 	char		**cmd1;
-	char		*path;
+	char		**path;
 
 	initialze(&vars, ac, av, envp);
 	if (ac == 6 && !ft_strncmp(av[1], "here_doc", sizeof(av[1])))
 	{
 		check_last_arg(&vars);
 		path = get_file_name(envp);
-		vars.path = ft_split(path, ':');
+		vars.path = ft_split(path[1], ':');
 		cmd = ft_split(av[3], ' ');
 		cmd1 = ft_split(av[4], ' ');
 		execute_heredoc(&vars, cmd, cmd1);
+		free_args(&vars, cmd, cmd1, path);
 	}
 }

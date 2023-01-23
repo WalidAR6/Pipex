@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_file_name_bonus.c                              :+:      :+:    :+:   */
+/*   here_loop.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:02:43 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/22 23:41:47 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/23 01:50:26 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/23 01:52:37 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipex_bonus.h"
 
-char	**get_file_name(char **envp)
+void	here_loop(t_heredoc *vars, int tmp)
 {
-	int		i;
-	char	**splited_line;
-
-	i = 0;
-	while (envp[i])
+	while (1)
 	{
-		if (ft_strnstr(envp[i], "PATH=", ft_strlen(envp[i])))
+		if (write(1, "> ", 2) == -1)
+			exit(1);
+		vars->line = get_next_line(0);
+		if (vars->line == NULL || ft_strcmp(vars->line, vars->limiter) == 0)
 		{
-			splited_line = ft_split(envp[i], '=');
-			return (splited_line);
+			free(vars->line);
+			break ;
 		}
-		i++;
+		if (write(tmp, vars->line, ft_strlen(vars->line)) == -1)
+			exit(1);
+		free(vars->line);
 	}
-	return (ft_printf(2, "commands not found\n"), NULL);
 }

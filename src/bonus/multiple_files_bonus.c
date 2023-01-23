@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:31:19 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/22 19:33:21 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 01:52:46 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	helper(t_vars *vars, int ac, char **av, char **envp)
 {
-	char	*path;
-
 	vars->ac = ac;
 	vars->av = av;
 	vars->envp = envp;
@@ -23,8 +21,6 @@ void	helper(t_vars *vars, int ac, char **av, char **envp)
 	vars->l_a = av[ac - 1];
 	check_first(vars);
 	check_last(vars);
-	path = get_file_name(envp);
-	vars->path = ft_split(path, ':');
 }
 
 void	close_fds(int fd0, int fd1, int res, int n)
@@ -48,7 +44,7 @@ void	execute_multi_pipe(t_vars *vars, int i)
 	if (pipe(vars->fd) == -1)
 		exit(1);
 	id = fork();
-	if ( id == -1)
+	if (id == -1)
 		exit(1);
 	if (id == 0)
 	{
@@ -72,10 +68,13 @@ void	multiple_pipes(int ac, char **av, char **envp)
 {
 	t_vars	vars;
 	int		i;
+	char	**path;
 
 	i = 2;
 	if (ac > 1 && ft_strncmp(av[1], "here_doc", sizeof(av[1])))
 	{
+		path = get_file_name(envp);
+		vars.path = ft_split(path[1], ':');
 		helper(&vars, ac, av, envp);
 		dup2(vars.infile, 0);
 		vars.res = dup(0);
@@ -86,5 +85,7 @@ void	multiple_pipes(int ac, char **av, char **envp)
 		}
 		if (close(vars.res) == -1)
 			exit(1);
+		ft_free(path);
+		ft_free(vars.path);
 	}
 }

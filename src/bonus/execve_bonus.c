@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:59:55 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/21 01:12:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 01:52:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*get_name(t_heredoc *vars, char **cmd)
 {
 	char	**paths;
+	char	*p;
 	int		i;
 
 	i = 0;
@@ -25,7 +26,8 @@ char	*get_name(t_heredoc *vars, char **cmd)
 			break ;
 		i++;
 	}
-	return (paths[i]);
+	p = ft_strdup(paths[i]);
+	return (ft_free(paths), p);
 }
 
 void	execute_child(t_heredoc *vars, char **cmd)

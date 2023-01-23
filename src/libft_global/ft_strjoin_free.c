@@ -1,31 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_file_name_bonus.c                              :+:      :+:    :+:   */
+/*   ft_strjoin_free.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/16 18:02:43 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/22 23:41:47 by waraissi         ###   ########.fr       */
+/*   Created: 2023/01/23 01:39:37 by waraissi          #+#    #+#             */
+/*   Updated: 2023/01/23 01:52:56 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../inc/pipex_bonus.h"
+#include "../../inc/libft.h"
 
-char	**get_file_name(char **envp)
+char	*ft_strjoin_free(char *s1, char *s2)
 {
-	int		i;
-	char	**splited_line;
+	size_t	i;
+	size_t	j;
+	char	*p;
 
 	i = 0;
-	while (envp[i])
+	j = 0;
+	if (!s2)
+		return (NULL);
+	p = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (!p)
+		return (NULL);
+	while (s1[i])
 	{
-		if (ft_strnstr(envp[i], "PATH=", ft_strlen(envp[i])))
-		{
-			splited_line = ft_split(envp[i], '=');
-			return (splited_line);
-		}
+		p[i] = s1[i];
 		i++;
 	}
-	return (ft_printf(2, "commands not found\n"), NULL);
+	while (s2[j])
+	{
+		p[i + j] = s2[j];
+		j++;
+	}
+	p[i + j] = 0;
+	return (free(s1), s1 = NULL, p);
 }
