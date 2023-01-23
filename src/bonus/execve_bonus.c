@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:59:55 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 01:52:11 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 15:49:51 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	execute_child(t_heredoc *vars, char **cmd)
 	file_name = get_name(vars, cmd);
 	if (execve(file_name, cmd, vars->envp) == -1)
 		ft_printf(2, "%s: command not found\n", cmd[0]);
+	free(file_name);
 }
