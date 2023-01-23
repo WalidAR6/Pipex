@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:31:19 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 20:00:21 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:15:39 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ void	execute_multi_pipe(t_vars *vars, int i)
 	}
 	else
 	{
-		close_fds(vars->fd[0], vars->fd[1], 2);
 		vars->res = vars->fd[0];
+		close_fds(vars->fd[0], vars->fd[1], 2);
 	}
 }
 
@@ -79,7 +79,7 @@ void	multiple_pipes(int ac, char **av, char **envp)
 		vars.path = ft_split(path[1], ':');
 		helper(&vars, ac, av, envp);
 		dup2(vars.infile, 0);
-		vars.res = dup(vars.infile);
+		vars.res = vars.infile;
 		while (i < ac - 1)
 		{
 			execute_multi_pipe(&vars, i);
@@ -87,6 +87,9 @@ void	multiple_pipes(int ac, char **av, char **envp)
 		}
 		while (wait(&status) > 0)
 			;
+		close(vars.res);
+		close(vars.infile);
+		close(vars.outfile);
 		ft_free(path);
 		ft_free(vars.path);
 	}

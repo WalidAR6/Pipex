@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 01:51:13 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:32:30 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ char	*get_name_multi(t_vars *vars, char **cmd);
 void	ft_free(char **p);
 void	free_args(t_heredoc *vars, char **cmd1, char **cmd2, char **path);
 void	here_loop(t_heredoc *vars, int tmp);
+char	**sep_first(char *arg);
 
 #endif

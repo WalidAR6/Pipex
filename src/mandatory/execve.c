@@ -6,11 +6,23 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:43:26 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 15:53:45 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:07:04 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/pipex.h"
+
+char	**sep_first(char *arg)
+{
+	char	**cmd;
+
+	cmd = malloc(2 * sizeof(char *));
+	if (!cmd)
+		return (NULL);
+	cmd[0] = ft_strdup(arg);
+	cmd[1] = NULL;
+	return (cmd);
+}
 
 char	*get_name(t_params *vars, char **cmd)
 {
@@ -19,7 +31,10 @@ char	*get_name(t_params *vars, char **cmd)
 	char	*p;
 
 	i = 0;
-	paths = join_commands(vars, cmd[0]);
+	if (ft_strchr(cmd[0], '/'))
+		paths = sep_first(cmd[0]);
+	else
+		paths = join_commands(vars, cmd[0]);
 	while (paths[i])
 	{
 		if (!access(paths[i], F_OK))

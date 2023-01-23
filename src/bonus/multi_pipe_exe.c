@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:02:24 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/21 01:22:03 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 23:33:15 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ char	*get_name_multi(t_vars *vars, char **cmd)
 	int		i;
 
 	i = 0;
-	paths = join_commands_multi(vars, cmd[0]);
+	if (ft_strchr(cmd[0], '/'))
+		paths = sep_first(cmd[0]);
+	else
+		paths = join_commands_multi(vars, cmd[0]);
 	while (paths[i])
 	{
 		if (!access(paths[i], F_OK))
