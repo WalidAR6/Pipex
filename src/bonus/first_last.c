@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 23:38:23 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/21 01:13:25 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 16:29:51 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void	check_first(t_vars *vars)
 	if (vars->infile == -1)
 	{
 		ft_printf(2, "%s: No such file or directory\n", vars->f_a);
-		exit(1);
 	}
 }
 

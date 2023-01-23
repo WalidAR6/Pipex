@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:41:05 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/22 20:03:43 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/23 20:00:37 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	exec_cmd_2(t_params *vars, char **envp, char **cmd, int *fd)
 	{
 		if (close(fd[1]) == -1 || close(fd[0]) == -1)
 			exit(1);
-		waitpid(id, 0, 0);
 	}
 }
 
@@ -38,6 +37,7 @@ void	exec_all_cmd(t_params *vars, char **envp, char **cmd1, char **cmd2)
 {
 	int	fds[2];
 	int	id;
+	int	status;
 
 	if (pipe(fds) == -1)
 		exit(1);
@@ -53,5 +53,6 @@ void	exec_all_cmd(t_params *vars, char **envp, char **cmd1, char **cmd2)
 	}
 	else
 		exec_cmd_2(vars, envp, cmd2, fds);
-	waitpid(id, 0, 0);
+	while (wait(&status) > 0)
+		;
 }
