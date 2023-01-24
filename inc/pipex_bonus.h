@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 14:36:01 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 19:23:25 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ typedef struct s_vars
 }				t_vars;
 
 void	here_doc(int ac, char **av, char **envp);
-void	multuple_pipes(int ac, char **av, char **envp);
 char	*get_name(t_heredoc *vars, char **cmd);
 void	execute_child(t_heredoc *vars, char **cmd);
 char	**get_file_name(char **envp);

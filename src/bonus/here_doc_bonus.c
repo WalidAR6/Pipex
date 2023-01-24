@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 01:03:59 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 20:05:26 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)
 {
 	int		tmp;
 
-	tmp = open(".heredoc.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
+	tmp = open(".heredoc.txt", O_RDWR | O_CREAT | O_APPEND, 0644);
 	if (!tmp)
 		exit(1);
 	vars->limiter = ft_strjoin(vars->h_d, "\n");
@@ -100,6 +100,8 @@ void	here_doc(int ac, char **av, char **envp)
 	{
 		check_last_arg(&vars);
 		path = get_file_name(envp);
+		if (!path)
+			exit(1);
 		vars.path = ft_split(path[1], ':');
 		cmd = ft_split(av[3], ' ');
 		cmd1 = ft_split(av[4], ' ');
