@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 23:48:28 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:33:11 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,9 @@ int	main(int ac, char **av, char **envp)
 		vars.path = ft_split(path[1], ':');
 		exec_all_cmd(&vars, envp, cmd1, cmd2);
 		free_args(&vars, cmd1, cmd2, path);
+		close(vars.infile);
+		close(vars.outfile);
 	}
 	else
-	{
-		ft_printf(2, "Error check your args");
-		exit(1);
-	}
+		return (ft_printf(2, "Error check your args"), 1);
 }

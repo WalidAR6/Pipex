@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:29:36 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 20:19:54 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:36:12 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void	free_args(t_heredoc *vars, char **cmd1, char **cmd2, char **path)
 int	main(int ac, char **av, char **envp)
 {
 	here_doc(ac, av, envp);
-	multiple_pipes(ac, av, envp);
+	multiple_pipes(ac, av, envp, 2);
 	return (0);
 }

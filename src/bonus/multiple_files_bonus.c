@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:31:19 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 01:53:19 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:35:44 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ void	execute_multi_pipe(t_vars *vars, int i)
 	{
 		if (dup2(vars->res, 0) == -1 || dup2(vars->fd[1], 1) == -1)
 			exit(1);
-		// close(vars->res);
 		close_fds(vars->fd[0], vars->fd[1], 1);
 		if (i == vars->ac - 2)
 			if (dup2(vars->outfile, 1) == -1)
@@ -65,14 +64,12 @@ void	execute_multi_pipe(t_vars *vars, int i)
 	}
 }
 
-void	multiple_pipes(int ac, char **av, char **envp)
+void	multiple_pipes(int ac, char **av, char **envp, int i)
 {
 	t_vars	vars;
-	int		i;
 	char	**path;
 	int		status;
 
-	i = 2;
 	if (ac > 1 && ft_strncmp(av[1], "here_doc", sizeof(av[1])))
 	{
 		path = get_file_name(envp);

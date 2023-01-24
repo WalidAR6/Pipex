@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 23:32:30 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 14:36:01 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char	**get_file_name(char **envp);
 char	**join_commands(t_heredoc *vars, char *arg);
 int		get_paths_len(char **str);
 void	check_last_arg(t_heredoc *vars);
-void	multiple_pipes(int ac, char **av, char **envp);
+void	multiple_pipes(int ac, char **av, char **envp, int i);
 void	check_first(t_vars *vars);
 void	check_last(t_vars *vars);
 void	execute_first_cmd(t_vars *vars, char **envp, char **cmd);
