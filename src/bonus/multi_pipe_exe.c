@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:02:24 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 00:57:38 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:40:00 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ void	execute_first_cmd(t_vars *vars, char **envp, char **cmd)
 {
 	char	*file_name;
 
+	if (!cmd[0])
+	{
+		ft_printf(2, " : command not found\n");
+		exit(1);
+	}	
 	file_name = get_name_multi(vars, cmd);
 	if (file_name == NULL)
 	{

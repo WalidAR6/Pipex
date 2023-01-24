@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:43:26 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 00:49:09 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:20:46 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,14 @@ char	*get_name(t_params *vars, char **cmd)
 void	execute_cmd(t_params *vars, char **envp, char **cmd)
 {
 	char	*file_name;
-
+	
+	if (!cmd[0])
+	{
+		ft_printf(2, " : command not found\n");
+		exit(1);
+	}	
 	file_name = get_name(vars, cmd);
-	if (file_name == NULL)
+	if (!file_name)
 	{
 		ft_printf(2, "%s: command not found\n", cmd[0]);
 		exit(1);
