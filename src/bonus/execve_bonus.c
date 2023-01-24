@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 17:59:55 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 23:29:06 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:01:48 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ char	*get_name(t_heredoc *vars, char **cmd)
 			break ;
 		i++;
 	}
+	if (paths[i] == NULL)
+		return (ft_free(paths), NULL);
 	p = ft_strdup(paths[i]);
 	return (ft_free(paths), p);
 }
@@ -50,6 +52,11 @@ void	execute_child(t_heredoc *vars, char **cmd)
 	char	*file_name;
 
 	file_name = get_name(vars, cmd);
+	if (file_name == NULL)
+	{
+		ft_printf(2, "%s: command not found\n", cmd[0]);
+		exit(1);
+	}
 	if (execve(file_name, cmd, vars->envp) == -1)
 		ft_printf(2, "%s: command not found\n", cmd[0]);
 	free(file_name);

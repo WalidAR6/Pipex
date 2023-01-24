@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 01:50:50 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 01:03:59 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	execution_sec(t_heredoc *vars, int *fd, char **cmd1)
 	{
 		if (close(fd[0]) == -1 || close(fd[1]) == -1)
 			exit(1);
-		waitpid(id, 0, 0);
 	}
 }
 
@@ -38,6 +37,7 @@ void	execution(t_heredoc *vars, int tmp, char **cmd, char **cmd1)
 {
 	int	fd[2];
 	int	id;
+	int	status;
 
 	if (pipe(fd) == -1)
 		exit(1);
@@ -57,6 +57,8 @@ void	execution(t_heredoc *vars, int tmp, char **cmd, char **cmd1)
 			exit(1);
 		execution_sec(vars, fd, cmd1);
 	}
+	while (wait(&status) > 0)
+		;
 }
 
 void	execute_heredoc(t_heredoc *vars, char **cmd, char **cmd1)

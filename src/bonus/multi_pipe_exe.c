@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/18 13:02:24 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/23 23:33:15 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/24 00:57:38 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ char	*get_name_multi(t_vars *vars, char **cmd)
 {
 	char	**paths;
 	int		i;
+	char	*p;
 
 	i = 0;
 	if (ft_strchr(cmd[0], '/'))
@@ -46,7 +47,10 @@ char	*get_name_multi(t_vars *vars, char **cmd)
 			break ;
 		i++;
 	}
-	return (paths[i]);
+	if (paths[i] == NULL)
+		return (ft_free(paths), NULL);
+	p = ft_strdup(paths[i]);
+	return (ft_free(paths), p);
 }
 
 void	execute_first_cmd(t_vars *vars, char **envp, char **cmd)
@@ -54,6 +58,13 @@ void	execute_first_cmd(t_vars *vars, char **envp, char **cmd)
 	char	*file_name;
 
 	file_name = get_name_multi(vars, cmd);
-	if (execve(file_name, cmd, envp) == -1)
+	if (file_name == NULL)
+	{
 		ft_printf(2, "%s: command not found\n", cmd[0]);
+		exit(1);
+	}
+	execve(file_name, cmd, envp);
+	ft_printf(2, "%s: command not found\n", cmd[0]);
+	free(file_name);
+	exit(1);
 }
