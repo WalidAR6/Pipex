@@ -26,9 +26,9 @@ all: ${NAME}
 ${NAME} : ${OBJCTS} 
 	${CC} ${FLAGS} $(EXE) $^ -o $@
 
-$(OBJ_DIR)%.o : %.c ../../inc/pipex_bonus.h
+$(OBJ_DIR)%.o : %.c ../../inc/pipex_bonus.h ../../inc/libft.h $(EXE)
 	@mkdir -p $(OBJ_DIR)
-	${CC} ${FLAGS} -c $< -o $@ -g
+	${CC} ${FLAGS} -c $< -o $@
 
 clean: 
 	@${RM} $(OBJCTS)

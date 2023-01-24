@@ -6,7 +6,7 @@
 #    By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/10/20 12:08:36 by waraissi          #+#    #+#              #
-#    Updated: 2023/01/23 01:40:08 by waraissi         ###   ########.fr        #
+#    Updated: 2023/01/24 16:54:09 by waraissi         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ ${NAME}: ${OBJCTS}
 
 $(OBJ_DIR)%.o: %.c ../../inc/libft.h
 	@mkdir -p $(OBJ_DIR)
-	@${CC} ${FLAGS} -c $< -o $@ -g
+	${CC} ${FLAGS} -c $< -o $@
 	
 clean:
 	@rm $(OBJCTS)
