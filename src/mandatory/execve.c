@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 22:43:26 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 14:32:16 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:47:06 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ char	*get_name(t_params *vars, char **cmd)
 	char	*p;
 
 	i = 0;
+	if (*cmd[0] == '.')
+		return (ft_strdup(cmd[0]));
 	if (ft_strchr(cmd[0], '/'))
 		paths = sep_first(cmd[0]);
 	else
@@ -63,7 +65,7 @@ void	execute_cmd(t_params *vars, char **envp, char **cmd)
 		exit(1);
 	}
 	execve(file_name, cmd, envp);
-	ft_printf(2, "%s: command not found\n", cmd[0]);
+	ft_printf(2, "pipex: %s: %s\n", cmd[0], strerror(errno));
 	free(file_name);
 	exit(1);
 }

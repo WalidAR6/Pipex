@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:42 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 14:33:11 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:45:29 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,17 @@ void	free_args(t_params *vars, char **cmd1, char **cmd2, char **path)
 	ft_free(vars->path);
 }
 
+char	**check_path(char	**p)
+{
+	p = malloc(3 * sizeof(char *));
+	if (!p)
+		return (NULL);
+	p[0] = ft_strdup("");
+	p[1] = ft_strdup("");
+	p[2] = NULL;
+	return (p);
+}
+
 int	main(int ac, char **av, char **envp)
 {
 	t_params	vars;
@@ -48,7 +59,7 @@ int	main(int ac, char **av, char **envp)
 		check_last_arg(&vars);
 		path = get_file_name(envp);
 		if (!path)
-			exit(1);
+			path = check_path(path);
 		cmd1 = ft_split(av[2], ' ');
 		cmd2 = ft_split(av[3], ' ');
 		vars.path = ft_split(path[1], ':');

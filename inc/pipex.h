@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:00:07 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 19:13:33 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:46:45 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <errno.h>
 
 typedef struct s_params
 {
