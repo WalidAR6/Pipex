@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 20:30:12 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 19:23:25 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:51:28 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <sys/wait.h>
 # include <fcntl.h>
 # include <stdlib.h>
+# include <errno.h>
 
 typedef struct s_heredoc
 {
@@ -61,5 +62,6 @@ void	ft_free(char **p);
 void	free_args(t_heredoc *vars, char **cmd1, char **cmd2, char **path);
 void	here_loop(t_heredoc *vars, int tmp);
 char	**sep_first(char *arg);
+char	**check_path(char	**p);
 
 #endif

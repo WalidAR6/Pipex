@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 16:44:11 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 20:05:26 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:54:51 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	here_doc(int ac, char **av, char **envp)
 		check_last_arg(&vars);
 		path = get_file_name(envp);
 		if (!path)
-			exit(1);
+			path = check_path(path);
 		vars.path = ft_split(path[1], ':');
 		cmd = ft_split(av[3], ' ');
 		cmd1 = ft_split(av[4], ' ');

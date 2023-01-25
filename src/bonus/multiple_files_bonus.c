@@ -6,7 +6,7 @@
 /*   By: waraissi <waraissi@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/16 19:31:19 by waraissi          #+#    #+#             */
-/*   Updated: 2023/01/24 14:35:44 by waraissi         ###   ########.fr       */
+/*   Updated: 2023/01/25 23:49:23 by waraissi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,17 @@ void	execute_multi_pipe(t_vars *vars, int i)
 	}
 }
 
+char	**check_path(char	**p)
+{
+	p = malloc(3 * sizeof(char *));
+	if (!p)
+		return (NULL);
+	p[0] = ft_strdup("");
+	p[1] = ft_strdup("");
+	p[2] = NULL;
+	return (p);
+}
+
 void	multiple_pipes(int ac, char **av, char **envp, int i)
 {
 	t_vars	vars;
@@ -74,7 +85,7 @@ void	multiple_pipes(int ac, char **av, char **envp, int i)
 	{
 		path = get_file_name(envp);
 		if (!path)
-			exit(1);
+			path = check_path(path);
 		vars.path = ft_split(path[1], ':');
 		helper(&vars, ac, av, envp);
 		vars.res = vars.infile;
